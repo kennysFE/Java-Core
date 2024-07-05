@@ -1,5 +1,6 @@
 package lab03;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Excercise_03 {
@@ -28,11 +29,46 @@ public class Excercise_03 {
 	}
 
 	public static void KiemTraBCC() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Nhap so can kiem tra bang cuu chuong :");
+		int a = scanner.nextInt();
+		System.out.println("Bang cua chuong " + a);
+		for (int i = 1; i < 11; i++) {
+			System.out.printf(" %d x %d = %d ", a, i, a * i);
+		}
 
+		scanner.close();
 	}
 
 	public static void KiemtraMang() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Nhap so phan tu trong mang ");
+		int a = scanner.nextInt();
+		int[] array = new int[a];
+		System.out.println("Nhap cac phan tu trong mang " + a);
+		for (int i = 0; i < a; i++) {
+			System.out.printf("Nhap phan tu thu %d = ", i + 1);
+			array[i] = scanner.nextInt();
+		}
+		System.out.println("Mang ban da nhap la : " + Arrays.toString(array));
+		System.out.println("===================================");
+		Arrays.sort(array);
+		System.out.println("Mang duoc sap xếp lai như sau : " + Arrays.toString(array));
+		System.out.println("===================================");
 
+		int max = array[0];
+		for (int i = 0; i < array.length; i++) {
+			max = Math.max(max, array[i]);
+		}
+		System.out.println("Gia tri lon nhat cua mang :" + max);
+		System.out.println("===================================");
+
+		int min = array[0];
+		for (int i = 0; i < array.length; i++) {
+			min = Math.min(min, array[i]);
+		}
+		System.out.println("Gia tri nho nhat cua mang :" + min);
+		scanner.close();
 	}
 
 	public static void main(String[] args) {
