@@ -1,12 +1,12 @@
 package lab04;
 
 public class Product {
-	// atribute
+	// Attribute
 	private String name;
 	private double price;
 	private double tax;
 
-	// Contructor
+	// Constructor
 
 	public Product() {
 
@@ -44,7 +44,7 @@ public class Product {
 		this.tax = tax;
 	}
 
-	// Method , Fucntion
+	// Method , Function
 
 	public Product nhapThongTin(String name, double price, double tax) {
 		Product product = new Product(name, price, tax);
