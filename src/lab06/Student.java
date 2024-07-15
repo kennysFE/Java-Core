@@ -16,7 +16,7 @@ public class Student {
 	}
 	
 	
-	// Method override 
+	// Method override toString
 	@Override
 	public String toString() {
 		return "Student [name=" + name + ", id=" + id + "]";
