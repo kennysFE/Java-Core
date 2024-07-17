@@ -4,12 +4,19 @@ public class SinhVienIT extends SinhVien {
 	
 	// Atribute
 	private String language;
+	private double scoreJava;
+	private double scoreHTML;
+	
 	
 	
 	// Contrustor 
-	public SinhVienIT(String language, String id, String name, double price, double tax) {
+	public SinhVienIT(String language, String id, String name, double price, 
+			double tax,double scoreJava, double scoreHTML ) 
+	{
 		super(id, name, price, tax);
 		this.language = language;
+		this.scoreJava = scoreJava;
+		this.scoreHTML = scoreHTML;
 	}
 	
 	public SinhVienIT() {
@@ -28,6 +35,22 @@ public class SinhVienIT extends SinhVien {
 	}
 	
 	
+	public double getScoreJava() {
+		return scoreJava;
+	}
+
+	public void setScoreJava(double scoreJava) {
+		this.scoreJava = scoreJava;
+	}
+
+	public double getScoreHTML() {
+		return scoreHTML;
+	}
+
+	public void setScoreHTML(double scoreHTML) {
+		this.scoreHTML = scoreHTML;
+	}
+
 	//Method 
 	public void getMoney() {
 		System.out.println("Run get money");
@@ -41,9 +64,9 @@ public class SinhVienIT extends SinhVien {
 	}
 
 	@Override
-	void tinhDiem() {
-		// TODO Auto-generated method stub
-		
+	void getDiem() {
+		double scoreSinhVienIt =  (this.scoreJava * 2 + this.scoreHTML)/3;
+		System.out.println("Diem Sinh Vien IT = " + scoreSinhVienIt );
 	}
 	
 	

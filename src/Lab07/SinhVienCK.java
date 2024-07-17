@@ -4,6 +4,9 @@ public class SinhVienCK extends SinhVien {
 	
 	// Atribute
 	private String skill;
+	private double scoreCNC;
+	private double scorePLC;
+	
 	
 	
 	// Contructor
@@ -12,9 +15,12 @@ public class SinhVienCK extends SinhVien {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SinhVienCK(String skill, String id, String name, double price, double tax) {
+	public SinhVienCK(String skill, String id, String name, double price, double tax, 
+			double scoreCNC,double scorePLC ) {
 		super(id, name, price, tax);
 		this.skill = skill;
+		this.scoreCNC = scoreCNC;
+		this.scorePLC = scorePLC;
 	}
 
 	@Override
@@ -32,11 +38,27 @@ public class SinhVienCK extends SinhVien {
 	public void setSkill(String skill) {
 		this.skill = skill;
 	}
+	
+	public double getScoreCNC() {
+		return scoreCNC;
+	}
+
+	public void setScoreCNC(double scoreCNC) {
+		this.scoreCNC = scoreCNC;
+	}
+
+	public double getScorePLC() {
+		return scorePLC;
+	}
+
+	public void setScorePLC(double scorePLC) {
+		this.scorePLC = scorePLC;
+	}
 
 	@Override
-	void tinhDiem() {
-		// TODO Auto-generated method stub
-		
+	void getDiem() {
+		double scoreSinhVienCK =  (this.scoreCNC + this.scorePLC)/2;;
+		System.out.println("Diem Sinh Vien IT = " + scoreSinhVienCK );
 	}
 	
 

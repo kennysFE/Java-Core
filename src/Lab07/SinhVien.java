@@ -10,7 +10,7 @@ public abstract class SinhVien {
 		
 	// Method Abstract 
 		
-		abstract void tinhDiem();
+		abstract void getDiem();
 		// Khi mot function lop cha co thuoc tinhh abstract, bat buoc phai bao fucion do ben trong lop con 
 		
 	// Method 
