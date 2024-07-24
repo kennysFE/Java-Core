@@ -1,16 +1,17 @@
 package lab09;
 
 public class ExceptionDevideByZero extends Exception {
-	public float x; 
+	public float x;
 	public float y;
-	
+
 	public ExceptionDevideByZero(float x, float y) {
-		this.x = x; 
+		super.getMessage();
+		this.x = x;
 		this.y = y;
 	}
-	
+
 	@Override
 	public String getMessage() {
-		return "Exception Devide By Zero ("+x+"/"+y+")";
+		return "Exception Devide By Zero (" + x + "/" + y + ")";
 	}
 }

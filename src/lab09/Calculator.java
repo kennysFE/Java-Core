@@ -5,9 +5,9 @@ public class Calculator {
 		if (y == 0) {
 			throw new ExceptionDevideByZero(x, y);
 		}
-		return x/y;
+		return x / y;
 	}
-	
+
 	public static int plus(int x, int y) {
 		return x + y;
 	}
