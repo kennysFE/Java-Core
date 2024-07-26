@@ -26,3 +26,20 @@ Lab4 / Chapter 4
 Lab 5
 - ArrayList
 - While loop
+
+
+Java Core
+Acknowledgements
+Awesome Readme Templates
+Awesome README
+How to write a Good readme
+Badges
+Add badges from somewhere like: shields.io
+
+MIT LicenseGPLv3 LicenseAGPL License
+
+Documentation
+Documentation
+
+🛠 Skills
+Javascript, HTML, CSS...
