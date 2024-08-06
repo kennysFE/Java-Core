@@ -76,3 +76,5 @@ The project synthesizes knowledge about the Java language. The content of the co
     StreamIO
 
     Mutiple thread
+
+    Solution Application 
