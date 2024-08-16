@@ -2,6 +2,8 @@ package Lab12;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Vector;
 
 public class Collection {
 	public static void main(String[] args) {
@@ -63,4 +65,26 @@ public class Collection {
 
 		System.out.println("test arraylist" + student.toString());
 	}
+
+	// Vector
+
+	Vector<String> student2 = new Vector<String>();
+
+	// LinkedList
+
+	LinkedList<String> student3 = new LinkedList<String>();
+
+	/*
+	 * ArrayList, Vector, LinkedList deu la list interface ArrayList tu dong tang
+	 * kich thuoc cua mang khi ta them cac phan tu vao trong mang
+	 * 
+	 * Vector được đồng bộ, tức là trong môi trường đa luồng, tại một thời điểm chỉ
+	 * có một thread được thực thi, các thread còn lại ở trong trạng thái chờ cho
+	 * đến khi thread hiện tại giải phóng đối tượng.
+	 * 
+	 * LinkedList sử dụng danh sách liên kết (doubly linked list) để lưu trữ các
+	 * phần tử. Mỗi phần tử chứa tham chiếu đến phần tử trước đó và phần tử tiếp
+	 * theo.
+	 */
+
 }
