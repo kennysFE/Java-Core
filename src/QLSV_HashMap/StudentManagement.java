@@ -11,8 +11,8 @@ public class StudentManagement {
 	}
 
 	// SearchStudentByRollNo
-	public Student searchStudentByRollNo(Student student) {
-		return StudentManagement.get(student.getRollNo());
+	public Student searchStudentByRollNo(String lookRollNo) {
+		return StudentManagement.get(lookRollNo);
 	}
 
 	// ShowAllInforStudent
@@ -21,7 +21,7 @@ public class StudentManagement {
 			// Duyet mang StudentManagement
 			System.out.println("----------- List Student-----------");
 			for (String key : StudentManagement.keySet()) {
-				System.out.println("Student" + key + StudentManagement.get(key));
+				System.out.println("Student " + key + StudentManagement.get(key));
 			}
 		} else {
 			System.out.println("No information on list");

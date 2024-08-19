@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class App {
 
+	public static Scanner scanner = new Scanner(System.in);
+	public static StudentManagement studentManagement = new StudentManagement();
+
 	// Exception Check Choice (Valid 1 -> 4)
 	public static int CheckChoice(int choice) throws ExceptionChoice {
 		if (choice < 0 || choice > 4) {
@@ -25,19 +28,53 @@ public class App {
 		System.out.println(" ++ ----------------------- ++ ");
 	}
 
+	// 1. Add Student Feature
+	public static void featureAddStudent() {
+		System.out.println(" Enter rollNo : ");
+		String rollNo = scanner.next();
+		System.out.println(" Enter name : ");
+		String name = scanner.next();
+		System.out.println(" Enter sex : ");
+		String sex = scanner.next();
+		System.out.println(" Enter age : ");
+		int age = scanner.nextInt();
+		System.out.println(" Enter email : ");
+		String email = scanner.next();
+		System.out.println(" Enter address : ");
+		String address = scanner.next();
+		Student st1 = new Student(rollNo, name, sex, age, email, address);
+		studentManagement.addStudent(st1);
+
+	}
+
+	// 2. Feature Search Student By RollNo
+	public static void featureSearchStudentByRollNo() {
+		System.out.println(" Enter rollNo you find : ");
+		String lookRollNo = scanner.next();
+		Student stc = studentManagement.searchStudentByRollNo(lookRollNo);
+		if (stc == null) {
+			System.out.println(" Invalid Data! ");
+		} else
+//			System.out.println(studentManagement.searchStudentByRollNo(lookRollNo));
+			stc.display();
+	}
+
 	// Action Select Choice Menu (Switch - case)
 	public static void SelectActionMenu(int choice) {
 		switch (choice) {
 		case 1: {
 			System.out.println("** 1. Add Student **");
+			featureAddStudent();
 			break;
 		}
 		case 2: {
 			System.out.println("** 2. Search Student By RollNo **");
+			featureSearchStudentByRollNo();
 			break;
 		}
 		case 3: {
 			System.out.println("** 3. Get All Information Student **");
+			studentManagement.showAllInforStudent();
 			break;
 		}
 		case 4: {
@@ -45,14 +82,13 @@ public class App {
 			System.exit(0);
 		}
 		default:
-			System.out.println("Invalid choice, Try choice again");
+			System.out.println(" Invalid choice, Try choice again");
 			break;
 		}
 	}
 
 	// App
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 		boolean running = true;
 
 		while (running) {
