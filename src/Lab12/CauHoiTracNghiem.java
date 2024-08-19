@@ -23,6 +23,7 @@ public class CauHoiTracNghiem {
 				break;
 			} else {
 				System.out.println("vui long chon dap an ");
+				break;
 			}
 		}
 		scanner.close();
