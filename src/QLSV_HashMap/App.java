@@ -8,6 +8,25 @@ public class App {
 
 	public static Scanner scanner = new Scanner(System.in);
 	public static StudentManagement studentManagement = new StudentManagement();
+	public static boolean running = true;
+
+	// Feature Back Menu
+	public static void FeatureBackMenu() {
+		while (true) {
+			System.out.println(" - You want back menu student management ? [y/n]");
+			System.out.println(" - Your Enter : ");
+			String checkBack = scanner.next();
+			if (checkBack.equals("y") || checkBack.equals("Y")) {
+				running = true;
+				break;
+			} else if (checkBack.equals("n") || checkBack.equals("N")) {
+				running = false;
+			} else {
+				System.out.println(" - Invalid character ! ");
+			}
+
+		}
+	}
 
 	// Exception Check Choice (Valid 1 -> 4)
 	public static int CheckChoice(int choice) throws ExceptionChoice {
@@ -15,6 +34,15 @@ public class App {
 			throw new ExceptionChoice(choice);
 		}
 		return choice;
+	}
+
+	// Exception Check Age Student
+
+	public static int CheckAgeStudent(int age) throws ExceptionAgeStudent {
+		if (age < 0 || age > 1000) {
+			throw new ExceptionAgeStudent(age);
+		}
+		return age;
 	}
 
 	// Menu Student Management
@@ -29,33 +57,51 @@ public class App {
 	}
 
 	// 1. Add Student Feature
-	public static void featureAddStudent() {
-		System.out.println(" Enter rollNo : ");
-		String rollNo = scanner.next();
-		System.out.println(" Enter name : ");
-		String name = scanner.next();
-		System.out.println(" Enter sex : ");
-		String sex = scanner.next();
-		System.out.println(" Enter age : ");
-		int age = scanner.nextInt();
-		System.out.println(" Enter email : ");
-		String email = scanner.next();
-		System.out.println(" Enter address : ");
-		String address = scanner.next();
-		Student st1 = new Student(rollNo, name, sex, age, email, address);
-		studentManagement.addStudent(st1);
+	public static void featureAddStudent(int QualityStudent) {
+		for (int i = 1; i <= QualityStudent; i++) {
+			System.out.println(" - Enter rollNo Student " + i + ":");
+			String rollNo = scanner.next();
+			System.out.println(" - Enter name Student " + i + ":");
+			String name = scanner.next();
+			System.out.println(" - Enter sex Student " + i + ": ");
+			String sex = scanner.next();
 
+			// Check Age
+
+			int age;
+			while (true) {
+				try {
+					System.out.println(" - Enter age Student " + i + ": ");
+					age = scanner.nextInt();
+					try {
+						CheckAgeStudent(age);
+						break;
+					} catch (ExceptionAgeStudent e) {
+						System.out.println(e.getMessage());
+					}
+				} catch (Exception e) {
+					scanner.nextLine();
+					System.out.println(" * Age must be the number, Try it again ");
+				}
+			}
+
+			System.out.println(" - Enter email Student " + i + ": ");
+			String email = scanner.next();
+			System.out.println(" - Enter address Student " + i + ": ");
+			String address = scanner.next();
+			Student st1 = new Student(rollNo, name, sex, age, email, address);
+			studentManagement.addStudent(st1);
+		}
 	}
 
 	// 2. Feature Search Student By RollNo
 	public static void featureSearchStudentByRollNo() {
-		System.out.println(" Enter rollNo you find : ");
+		System.out.println(" - Enter rollNo you find : ");
 		String lookRollNo = scanner.next();
 		Student stc = studentManagement.searchStudentByRollNo(lookRollNo);
 		if (stc == null) {
-			System.out.println(" Invalid Data! ");
+			System.out.println(" - Invalid Data ! ");
 		} else
-//			System.out.println(studentManagement.searchStudentByRollNo(lookRollNo));
 			stc.display();
 	}
 
@@ -64,17 +110,22 @@ public class App {
 		switch (choice) {
 		case 1: {
 			System.out.println("** 1. Add Student **");
-			featureAddStudent();
+			System.out.println(" - Enter number of Student on List ");
+			int numberStudent = scanner.nextInt();
+			featureAddStudent(numberStudent);
+			FeatureBackMenu();
 			break;
 		}
 		case 2: {
 			System.out.println("** 2. Search Student By RollNo **");
 			featureSearchStudentByRollNo();
+			FeatureBackMenu();
 			break;
 		}
 		case 3: {
 			System.out.println("** 3. Get All Information Student **");
 			studentManagement.showAllInforStudent();
+			FeatureBackMenu();
 			break;
 		}
 		case 4: {
@@ -82,14 +133,13 @@ public class App {
 			System.exit(0);
 		}
 		default:
-			System.out.println(" Invalid choice, Try choice again");
+			System.out.println(" - Invalid choice, Try choice again");
 			break;
 		}
 	}
 
 	// App
 	public static void main(String[] args) {
-		boolean running = true;
 
 		while (running) {
 			MenuSelect();
@@ -98,7 +148,7 @@ public class App {
 			// Exception Check Value User Entered
 			while (true) {
 				try {
-					System.out.println(" Enter your choice : ");
+					System.out.println(" - Enter your choice : ");
 					choice = scanner.nextInt();
 					try {
 						CheckChoice(choice);
@@ -108,7 +158,7 @@ public class App {
 					}
 				} catch (Exception e) {
 					scanner.nextLine();
-					System.out.println(" Pls enter number! ");
+					System.out.println(" - Pls enter number! ");
 				}
 			}
 
