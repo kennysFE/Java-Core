@@ -74,4 +74,10 @@ public class Book implements Serializable {
 				+ ", manufacturerName=" + manufacturerName + ", price=" + price + "]";
 	}
 
+	// Display on file
+	public String displayFileSaving() {
+		return bookName + "," + authorName + "," + publishDate + "," + manufacturerName + "," + price + "\n";
+
+	}
+
 }

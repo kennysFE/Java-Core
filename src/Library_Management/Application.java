@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Application {
 	public static Scanner scanner = new Scanner(System.in);
+	public static BookManagement bookManagement = new BookManagement();
 	public static boolean running = true;
 
 	// Exception Check choice (1 -> 7)
@@ -14,6 +15,25 @@ public class Application {
 		return choice;
 	}
 
+	// feature Add Book
+	public static void featureAddBook(int quality) {
+		for (int i = 0; i < quality; i++) {
+			System.out.println(" - Enter book name " + i + ":");
+			String bookName = scanner.next();
+			System.out.println(" - Enter author name " + i + ":");
+			String authorName = scanner.next();
+			System.out.println(" - Enter publish date " + i + ": ");
+			String publishDate = scanner.next();
+			System.out.println(" - Enter manufacturer name " + i + ": ");
+			String manufacturerName = scanner.next();
+			System.out.println(" - Enter price  " + i + ": ");
+			int price = scanner.nextInt();
+			bookManagement.addBook(new Book(bookName, authorName, publishDate, manufacturerName, price));
+			System.out.println(" Add Book Succesfully ");
+		}
+
+	}
+
 	// Menu Student Management
 	public static void MenuSelect() {
 		System.out.println(" >> -- Library Management -- << ");
@@ -21,8 +41,8 @@ public class Application {
 		System.out.println("| 1. Add Book |");
 		System.out.println("| 2. Sort by author name  |");
 		System.out.println("| 3. Get All Information Book|");
-		System.out.println("| 4. Save book object file");
-		System.out.println("| 5. Save book text file ");
+		System.out.println("| 4. Save book text file");
+		System.out.println("| 5. Save book object file ");
 		System.out.println("| 6. Read book from file ");
 		System.out.println("| 7. End Process | ");
 		System.out.println(" ++ ----------------------- ++ ");
@@ -33,12 +53,17 @@ public class Application {
 		switch (choice) {
 		case 1:
 			System.out.println(" 1. Add book ");
+			System.err.println(" Enter your quality book : ");
+			int quality = scanner.nextInt();
+			featureAddBook(quality);
 			break;
 		case 2:
 			System.out.println(" 2. Sort by author name ");
+			bookManagement.arrangeByAuthorName();
 			break;
 		case 3:
 			System.out.println(" 3. Get All Information Book ");
+			bookManagement.displayBookList();
 			break;
 		case 4:
 			System.out.println(" 4. Save book object file");
