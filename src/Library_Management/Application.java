@@ -41,9 +41,9 @@ public class Application {
 		System.out.println("| 1. Add Book |");
 		System.out.println("| 2. Sort by author name  |");
 		System.out.println("| 3. Get All Information Book|");
-		System.out.println("| 4. Save book text file");
-		System.out.println("| 5. Save book object file ");
-		System.out.println("| 6. Read book from file ");
+		System.out.println("| 4. Save book object file");
+		System.out.println("| 5. Save book text file ");
+		System.out.println("| 6. Read book from object file ");
 		System.out.println("| 7. End Process | ");
 		System.out.println(" ++ ----------------------- ++ ");
 	}
@@ -53,7 +53,7 @@ public class Application {
 		switch (choice) {
 		case 1:
 			System.out.println(" 1. Add book ");
-			System.err.println(" Enter your quality book : ");
+			System.out.println(" Enter your quality book : ");
 			int quality = scanner.nextInt();
 			featureAddBook(quality);
 			break;
@@ -67,12 +67,15 @@ public class Application {
 			break;
 		case 4:
 			System.out.println(" 4. Save book object file");
+			bookManagement.saveFileObject();
 			break;
 		case 5:
 			System.out.println(" 5. Save book text file ");
+			bookManagement.saveTextFile();
 			break;
 		case 6:
 			System.out.println(" 6. Read book from file ");
+			bookManagement.readFileObject();
 			break;
 		case 7:
 			System.out.println(" 7. End Process  ");

@@ -1,8 +1,13 @@
 package Library_Management;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -49,23 +54,23 @@ public class BookManagement implements Comparator<Book> {
 	}
 
 	// Save Text File (text file)
-	public void saveTextFile(String nameFile) {
+	public void saveTextFile() {
 		if (bookList.size() != 0) {
 			// Create value initiator = null
 			FileOutputStream fos = null;
 
 			try {
 				// Connect file
-				fos = new FileOutputStream(nameFile, true);
+				fos = new FileOutputStream("book.txt", true);
 
 				// Headerformat file
 				String headerFormat = "Book Name, Author Name, Publish Date, Manufacturer Name, Price" + "\n";
 
 				// Writting headerFormat on file
-				fos.write(headerFormat.getBytes());
+				fos.write(headerFormat.getBytes("utf-8"));
 
 				for (Book bookmember : bookList) {
-					fos.write(bookmember.displayFileSaving().getBytes());
+					fos.write(bookmember.displayFileSaving().getBytes("utf-8"));
 				}
 
 			} catch (FileNotFoundException e) {
@@ -90,4 +95,137 @@ public class BookManagement implements Comparator<Book> {
 
 	}
 
+	// Save File Object
+
+	public void saveFileObject() {
+
+		FileOutputStream fos = null;
+
+		ObjectOutputStream oos = null;
+
+		try {
+			fos = new FileOutputStream("book.dat");
+
+			oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(bookList);
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found");
+			e.getStackTrace();
+		} catch (IOException e) {
+			System.out.println("Output invalid");
+			e.getStackTrace();
+		} finally {
+			if (fos != null) {
+				try {
+					fos.close();
+				} catch (Exception e2) {
+					System.out.println(" Closed FileOutputStream error ");
+					e2.getStackTrace();
+				}
+			}
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception e2) {
+					System.out.println(" Closed ObjectOutputStream error ");
+					e2.getStackTrace();
+				}
+			}
+		}
+	}
+
+	// Read File Text
+
+	public void readFileText() {
+		FileReader fileReader = null;
+
+		BufferedReader bufferedReader = null;
+
+		try {
+			fileReader = new FileReader("book.txt");
+
+			bufferedReader = new BufferedReader(fileReader);
+
+			String line;
+
+			while ((line = bufferedReader.readLine()) != null) {
+				System.out.println(line);
+
+			}
+
+		} catch (FileNotFoundException ex) {
+			System.err.println(" File not found ");
+			ex.getStackTrace();
+		} catch (IOException ex) {
+			System.err.println(" Output invalid ");
+			ex.getStackTrace();
+		} finally {
+			if (fileReader != null) {
+				try {
+					fileReader.close();
+				} catch (Exception e) {
+					System.err.println(" Closed file reader error !");
+				}
+			}
+
+			if (bufferedReader != null) {
+				try {
+					bufferedReader.close();
+				} catch (Exception e) {
+					System.err.println(" Closed file bufferedreader error !");
+				}
+			}
+		}
+
+	}
+
+	// Read File Object File
+
+	public void readFileObject() {
+
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+
+		try {
+			fis = new FileInputStream("book.dat");
+			ois = new ObjectInputStream(fis);
+
+			ArrayList<Book> bookListReadFile = (ArrayList<Book>) ois.readObject();
+
+			bookListReadFile.forEach(book -> {
+				bookList.add(book);
+				System.out.println(book.toString());
+			});
+
+		} catch (FileNotFoundException e) {
+			System.out.println(" File not found ");
+			e.getStackTrace();
+		} catch (IOException e) {
+			System.out.println(" Input invalid ");
+			e.getStackTrace();
+		} catch (ClassNotFoundException e) {
+			System.out.println(" Class not found ");
+			e.printStackTrace();
+		} finally {
+			if (fis != null) {
+				try {
+					fis.close();
+				} catch (Exception e) {
+					System.out.println(" File closed error ");
+					e.getStackTrace();
+				}
+			}
+
+			if (ois != null) {
+				try {
+					ois.close();
+				} catch (Exception e) {
+					System.out.println(" File Object error ");
+					e.getStackTrace();
+				}
+			}
+		}
+
+	}
 }
