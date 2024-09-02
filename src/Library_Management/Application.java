@@ -17,7 +17,7 @@ public class Application {
 
 	// feature Add Book
 	public static void featureAddBook(int quality) {
-		for (int i = 0; i < quality; i++) {
+		for (int i = 1; i <= quality; i++) {
 			System.out.println(" - Enter book name " + i + ":");
 			String bookName = scanner.next();
 			System.out.println(" - Enter author name " + i + ":");

@@ -99,40 +99,39 @@ public class BookManagement implements Comparator<Book> {
 
 	public void saveFileObject() {
 
-		FileOutputStream fos = null;
+		if (bookList.size() != 0) {
+			FileOutputStream fos = null;
 
-		ObjectOutputStream oos = null;
+			ObjectOutputStream oos = null;
 
-		try {
-			fos = new FileOutputStream("book.dat");
+			try {
 
-			oos = new ObjectOutputStream(fos);
+				fos = new FileOutputStream("book.vn");
 
-			oos.writeObject(bookList);
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
-			e.getStackTrace();
-		} catch (IOException e) {
-			System.out.println("Output invalid");
-			e.getStackTrace();
-		} finally {
-			if (fos != null) {
-				try {
-					fos.close();
-				} catch (Exception e2) {
-					System.out.println(" Closed FileOutputStream error ");
-					e2.getStackTrace();
+				oos = new ObjectOutputStream(fos);
+
+				oos.writeObject(bookList);
+			} catch (FileNotFoundException e) {
+				System.err.println("File not found");
+				e.getStackTrace();
+			} catch (IOException e) {
+				System.err.println("Output invalid");
+				e.getStackTrace();
+			} finally {
+				if (fos != null && oos != null) {
+					try {
+						fos.close();
+						oos.close();
+					} catch (Exception e2) {
+						System.err.println(" Closed FileOutputStream error ");
+						e2.getStackTrace();
+					}
 				}
 			}
-			if (oos != null) {
-				try {
-					oos.close();
-				} catch (Exception e2) {
-					System.out.println(" Closed ObjectOutputStream error ");
-					e2.getStackTrace();
-				}
-			}
+		} else {
+			System.err.println(" Book not exist !");
 		}
+
 	}
 
 	// Read File Text
@@ -188,7 +187,7 @@ public class BookManagement implements Comparator<Book> {
 		ObjectInputStream ois = null;
 
 		try {
-			fis = new FileInputStream("book.dat");
+			fis = new FileInputStream("book.vn");
 			ois = new ObjectInputStream(fis);
 
 			ArrayList<Book> bookListReadFile = (ArrayList<Book>) ois.readObject();
@@ -208,20 +207,12 @@ public class BookManagement implements Comparator<Book> {
 			System.out.println(" Class not found ");
 			e.printStackTrace();
 		} finally {
-			if (fis != null) {
+			if (fis != null && ois != null) {
 				try {
 					fis.close();
-				} catch (Exception e) {
-					System.out.println(" File closed error ");
-					e.getStackTrace();
-				}
-			}
-
-			if (ois != null) {
-				try {
 					ois.close();
 				} catch (Exception e) {
-					System.out.println(" File Object error ");
+					System.out.println(" File closed error ");
 					e.getStackTrace();
 				}
 			}
