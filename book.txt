@@ -1,9 +1,2 @@
-Book Name, Author Name, Publish Date, Manufacturer Name, Price
-ee,da,2,eeqw,343
-qwqe,cqcc,dafs,jghg,575
-yiyu,tbf,78gj,jjyr,8796
-Book Name, Author Name, Publish Date, Manufacturer Name, Price
-eqeqw,eqw,44,ffc,532
-ouie,ekk,31,damm,760
-eqeqw,eqw,44,ffc,532
-ouie,ekk,31,damm,760
+Book Name, Author Name, Publish Date, Manufacturer Name, Price03/09/2024
+hello bookman,hoen,1/10/2012,Nhi Dong,210000

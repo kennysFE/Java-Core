@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -64,7 +66,8 @@ public class BookManagement implements Comparator<Book> {
 				fos = new FileOutputStream("book.txt", true);
 
 				// Headerformat file
-				String headerFormat = "Book Name, Author Name, Publish Date, Manufacturer Name, Price" + "\n";
+				String headerFormat = " Book Name, Author Name, Publish Date, Manufacturer Name , Price "
+						+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n";
 
 				// Writting headerFormat on file
 				fos.write(headerFormat.getBytes("utf-8"));
@@ -98,18 +101,12 @@ public class BookManagement implements Comparator<Book> {
 	// Save File Object
 
 	public void saveFileObject() {
-
 		if (bookList.size() != 0) {
 			FileOutputStream fos = null;
-
 			ObjectOutputStream oos = null;
-
 			try {
-
 				fos = new FileOutputStream("book.vn");
-
 				oos = new ObjectOutputStream(fos);
-
 				oos.writeObject(bookList);
 			} catch (FileNotFoundException e) {
 				System.err.println("File not found");
@@ -138,21 +135,14 @@ public class BookManagement implements Comparator<Book> {
 
 	public void readFileText() {
 		FileReader fileReader = null;
-
 		BufferedReader bufferedReader = null;
-
 		try {
 			fileReader = new FileReader("book.txt");
-
 			bufferedReader = new BufferedReader(fileReader);
-
 			String line;
-
 			while ((line = bufferedReader.readLine()) != null) {
 				System.out.println(line);
-
 			}
-
 		} catch (FileNotFoundException ex) {
 			System.err.println(" File not found ");
 			ex.getStackTrace();
@@ -160,19 +150,12 @@ public class BookManagement implements Comparator<Book> {
 			System.err.println(" Output invalid ");
 			ex.getStackTrace();
 		} finally {
-			if (fileReader != null) {
+			if (fileReader != null && bufferedReader != null) {
 				try {
 					fileReader.close();
-				} catch (Exception e) {
-					System.err.println(" Closed file reader error !");
-				}
-			}
-
-			if (bufferedReader != null) {
-				try {
 					bufferedReader.close();
 				} catch (Exception e) {
-					System.err.println(" Closed file bufferedreader error !");
+					System.err.println(" Closed file reader error !");
 				}
 			}
 		}
@@ -182,21 +165,16 @@ public class BookManagement implements Comparator<Book> {
 	// Read File Object File
 
 	public void readFileObject() {
-
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
-
 		try {
 			fis = new FileInputStream("book.vn");
 			ois = new ObjectInputStream(fis);
-
 			ArrayList<Book> bookListReadFile = (ArrayList<Book>) ois.readObject();
-
 			bookListReadFile.forEach(book -> {
 				bookList.add(book);
 				System.out.println(book.toString());
 			});
-
 		} catch (FileNotFoundException e) {
 			System.out.println(" File not found ");
 			e.getStackTrace();

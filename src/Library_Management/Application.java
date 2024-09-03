@@ -1,5 +1,6 @@
 package Library_Management;
 
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Application {
@@ -15,19 +16,76 @@ public class Application {
 		return choice;
 	}
 
+	// Exception Check Price
+	public static int checkPrice(int price) throws ExceptionPrice {
+		if (price < 0) {
+			throw new ExceptionPrice(price);
+		}
+		return price;
+	}
+
+	// Exception Check FormatDate
+
+	public static boolean isValidDateFormat(String dateStr, String format) {
+		// Tạo đối tượng SimpleDateFormat với định dạng mong đợi
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		// Đặt chế độ không dễ dãi (strict) để kiểm tra định dạng chính xác
+		sdf.setLenient(false);
+
+		try {
+			// Cố gắng phân tích chuỗi ngày tháng
+			sdf.parse(dateStr);
+			return true; // Nếu không gặp lỗi, định dạng là hợp lệ
+		} catch (Exception e) {
+			return false; // Nếu gặp lỗi, định dạng là không hợp lệ
+		}
+	}
+
 	// feature Add Book
 	public static void featureAddBook(int quality) {
 		for (int i = 1; i <= quality; i++) {
 			System.out.println(" - Enter book name " + i + ":");
-			String bookName = scanner.next();
-			System.out.println(" - Enter author name " + i + ":");
-			String authorName = scanner.next();
-			System.out.println(" - Enter publish date " + i + ": ");
-			String publishDate = scanner.next();
-			System.out.println(" - Enter manufacturer name " + i + ": ");
-			String manufacturerName = scanner.next();
-			System.out.println(" - Enter price  " + i + ": ");
-			int price = scanner.nextInt();
+			String bookName = scanner.nextLine();
+			System.out.println(" - Enter author name " + bookName + ":");
+			String authorName = scanner.nextLine();
+			String publishDate;
+
+			while (true) {
+				try {
+					System.out.println(" - Enter publish date " + " dd/MM/yyyy " + bookName + " : ");
+					publishDate = scanner.nextLine();
+					try {
+						if (isValidDateFormat(publishDate, "dd/MM/yyyy")) {
+							break;
+						} else {
+							throw new Exception();
+						}
+					} catch (Exception e) {
+						System.out.println(" error format");
+					}
+				} catch (Exception e) {
+					System.out.println("error");
+				}
+			}
+
+			System.out.println(" - Enter manufacturer name " + bookName + ": ");
+			String manufacturerName = scanner.nextLine();
+			int price;
+			while (true) {
+				try {
+					System.out.println(" - Enter price  " + bookName + ": ");
+					price = scanner.nextInt();
+					try {
+						checkPrice(price);
+						break;
+					} catch (ExceptionPrice e) {
+						System.out.println(e.getMessage());
+					}
+				} catch (Exception e) {
+					scanner.next();
+					System.out.println(" Price must be number, try it again ! ");
+				}
+			}
 			bookManagement.addBook(new Book(bookName, authorName, publishDate, manufacturerName, price));
 			System.out.println(" Add Book Succesfully ");
 		}
@@ -53,8 +111,9 @@ public class Application {
 		switch (choice) {
 		case 1:
 			System.out.println(" 1. Add book ");
-			System.out.println(" Enter your quality book : ");
+			System.out.println(" Enter your quality : ");
 			int quality = scanner.nextInt();
+			scanner.nextLine();
 			featureAddBook(quality);
 			break;
 		case 2:
