@@ -41,6 +41,23 @@ public class Application {
 		}
 	}
 
+	// Feature back Menu
+
+	public static void featureBackMenu() {
+		while (true) {
+			System.out.println(" You want to back menu ? [Y/n]");
+			String action = scanner.next();
+			if (action.equals("Y") || action.equals("y")) {
+				break;
+			} else if (action.equals("N") || action.equals("n")) {
+				System.out.println(" -> continue ");
+
+			} else {
+				System.out.println(" Your enter not correct ! ");
+			}
+		}
+	}
+
 	// feature Add Book
 	public static void featureAddBook(int quality) {
 		for (int i = 1; i <= quality; i++) {
@@ -86,9 +103,24 @@ public class Application {
 					System.out.println(" Price must be number, try it again ! ");
 				}
 			}
+			scanner.nextLine();
 			bookManagement.addBook(new Book(bookName, authorName, publishDate, manufacturerName, price));
 			System.out.println(" Add Book Succesfully ");
 		}
+		// Saving Book on file
+//		while (true) {
+//			System.out.println(" You want to save book on your file (object file and text file) ? [Y/n]");
+//			String action = scanner.next();
+//			if (action.equals("Y") || action.equals("y")) {
+//				bookManagement.saveFileObject();
+//				bookManagement.saveTextFile();
+//				break;
+//			} else if (action.equals("N") || action.equals("n")) {
+//				break;
+//			} else {
+//				System.out.println(" Your enter not correct ! ");
+//			}
+//		}
 
 	}
 
@@ -115,26 +147,32 @@ public class Application {
 			int quality = scanner.nextInt();
 			scanner.nextLine();
 			featureAddBook(quality);
+			featureBackMenu();
 			break;
 		case 2:
 			System.out.println(" 2. Sort by author name ");
 			bookManagement.arrangeByAuthorName();
+			featureBackMenu();
 			break;
 		case 3:
 			System.out.println(" 3. Get All Information Book ");
 			bookManagement.displayBookList();
+			featureBackMenu();
 			break;
 		case 4:
 			System.out.println(" 4. Save book object file");
 			bookManagement.saveFileObject();
+			featureBackMenu();
 			break;
 		case 5:
 			System.out.println(" 5. Save book text file ");
 			bookManagement.saveTextFile();
+			featureBackMenu();
 			break;
 		case 6:
 			System.out.println(" 6. Read book from file ");
 			bookManagement.readFileObject();
+			featureBackMenu();
 			break;
 		case 7:
 			System.out.println(" 7. End Process  ");

@@ -1,2 +1,5 @@
 Book Name, Author Name, Publish Date, Manufacturer Name, Price03/09/2024
 hello bookman,hoen,1/10/2012,Nhi Dong,210000
+ Book Name, Author Name, Publish Date, Manufacturer Name , Price 04/09/2024
+hello bookman,hoen,1/10/2012,Nhi Dong,210000
+Tenz,Tyson ngo,1/1/2000,Pro of valorant ,670000

@@ -105,7 +105,7 @@ public class BookManagement implements Comparator<Book> {
 			FileOutputStream fos = null;
 			ObjectOutputStream oos = null;
 			try {
-				fos = new FileOutputStream("book.vn");
+				fos = new FileOutputStream("book.vn", true);
 				oos = new ObjectOutputStream(fos);
 				oos.writeObject(bookList);
 			} catch (FileNotFoundException e) {
