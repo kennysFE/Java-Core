@@ -105,7 +105,7 @@ public class BookManagement implements Comparator<Book> {
 			FileOutputStream fos = null;
 			ObjectOutputStream oos = null;
 			try {
-				fos = new FileOutputStream("book.vn", true);
+				fos = new FileOutputStream("book.vn");
 				oos = new ObjectOutputStream(fos);
 				oos.writeObject(bookList);
 			} catch (FileNotFoundException e) {
@@ -115,13 +115,18 @@ public class BookManagement implements Comparator<Book> {
 				System.err.println("Output invalid");
 				e.getStackTrace();
 			} finally {
-				if (fos != null && oos != null) {
+				if (fos != null) {
 					try {
 						fos.close();
+					} catch (IOException ex) {
+						ex.getStackTrace();
+					}
+				}
+				if (oos != null) {
+					try {
 						oos.close();
-					} catch (Exception e2) {
-						System.err.println(" Closed FileOutputStream error ");
-						e2.getStackTrace();
+					} catch (IOException ex) {
+						ex.getStackTrace();
 					}
 				}
 			}
@@ -170,11 +175,15 @@ public class BookManagement implements Comparator<Book> {
 		try {
 			fis = new FileInputStream("book.vn");
 			ois = new ObjectInputStream(fis);
-			ArrayList<Book> bookListReadFile = (ArrayList<Book>) ois.readObject();
-			bookListReadFile.forEach(book -> {
-				bookList.add(book);
-				System.out.println(book.toString());
+
+			ArrayList<Book> dataList = (ArrayList<Book>) ois.readObject();
+			bookList.addAll(dataList);
+
+			dataList.forEach(book -> {
+//				bookList.add(book);
+				System.out.println(book);
 			});
+
 		} catch (FileNotFoundException e) {
 			System.out.println(" File not found ");
 			e.getStackTrace();
@@ -185,13 +194,18 @@ public class BookManagement implements Comparator<Book> {
 			System.out.println(" Class not found ");
 			e.printStackTrace();
 		} finally {
-			if (fis != null && ois != null) {
+			if (fis != null) {
 				try {
 					fis.close();
+				} catch (IOException ex) {
+					ex.getStackTrace();
+				}
+			}
+			if (ois != null) {
+				try {
 					ois.close();
-				} catch (Exception e) {
-					System.out.println(" File closed error ");
-					e.getStackTrace();
+				} catch (IOException ex) {
+					ex.getStackTrace();
 				}
 			}
 		}

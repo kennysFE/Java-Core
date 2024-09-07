@@ -13,9 +13,10 @@ public class ObjectFile {
 		ArrayList<Student> studentList = new ArrayList<>();
 
 		// studentList.add(new Student())
-		studentList.add(new Student("Nguyen Van A", "BD"));
-		studentList.add(new Student("Ngo Van B", "DS"));
-		studentList.add(new Student("Nguyen D", "MM"));
+//		studentList.add(new Student("Nguyen Van T", "BD2"));
+//		studentList.add(new Student("Ngo Van C", "DS1"));
+//		studentList.add(new Student("Nguyen E", "MM3"));
+		studentList.add(new Student("Nguyen K", "MM1111"));
 
 		// Khai bao mot ket noi toi file
 
@@ -23,7 +24,7 @@ public class ObjectFile {
 		ObjectOutputStream oos = null;
 
 		try {
-			fos = new FileOutputStream("studentBinary.dat");
+			fos = new FileOutputStream("studentBinary.dat", true);
 
 			oos = new ObjectOutputStream(fos);
 

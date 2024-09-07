@@ -108,19 +108,18 @@ public class Application {
 			System.out.println(" Add Book Succesfully ");
 		}
 		// Saving Book on file
-//		while (true) {
-//			System.out.println(" You want to save book on your file (object file and text file) ? [Y/n]");
-//			String action = scanner.next();
-//			if (action.equals("Y") || action.equals("y")) {
-//				bookManagement.saveFileObject();
-//				bookManagement.saveTextFile();
-//				break;
-//			} else if (action.equals("N") || action.equals("n")) {
-//				break;
-//			} else {
-//				System.out.println(" Your enter not correct ! ");
-//			}
-//		}
+		while (true) {
+			System.out.println(" You want to save book on your text file ? [Y/n]");
+			String action = scanner.next();
+			if (action.equals("Y") || action.equals("y")) {
+				bookManagement.saveTextFile();
+				break;
+			} else if (action.equals("N") || action.equals("n")) {
+				break;
+			} else {
+				System.out.println(" Your enter not correct ! ");
+			}
+		}
 
 	}
 
