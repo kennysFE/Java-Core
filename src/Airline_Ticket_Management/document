@@ -1,0 +1,21 @@
+// Function action airline ticket management 
+	Class AirlineTicket 
+	// Aribute String 
+	- codeFlight 
+	- nameFlight 
+	- dateTakeOff
+	- baggageSign
+	
+	// Aritbute price
+	- priceTicket
+	
+	* codeFlight entered format rules : 
+	VJABB : VietJet, A from 0 -> 9, BB from 0 -> 9 
+	VNABBC : VietnamAirlin, A from 0 -> 9, BB from 0 -> 9
+	JETABB : JetStar, A from 0 -> 9, BB from 0 -> 9 
+
+- 1. Enter infor n flight with code flight (format)
+- 2. Save information flight entered on text file (DataFlight.txt)
+- 3. Read information flight on file (DataFlight.txt) and show on screen 
+- 4. Show information after sort data format decrease price ticket
+- 5. Print information each flight on file respectively (example: infor flight 1 save on file flight_1.txt );   
