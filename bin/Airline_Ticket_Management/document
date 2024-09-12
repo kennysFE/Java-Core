@@ -6,7 +6,7 @@
 	- dateTakeOff
 	- baggageSign
 	
-	// Aritbute price
+	// Aritbute int
 	- priceTicket
 	
 	* codeFlight entered format rules : 
