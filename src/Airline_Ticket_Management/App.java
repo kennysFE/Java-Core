@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class App {
 	public static Scanner scanner = new Scanner(System.in);
 	public static boolean running = true;
+	public static AirlineTicketManagement airlineTicketList = new AirlineTicketManagement();
 
 	// Exception choice select menu
 	public static int checkChoice(int choice) throws ExceptionCheckNumber {
@@ -20,6 +21,45 @@ public class App {
 			throw new ExceptionCheckNumber(priceTicket);
 		}
 		return priceTicket;
+	}
+
+	// Feature add airline ticket
+	public static void addAirlineTicket(int quality) {
+		for (int i = 1; i <= quality; i++) {
+			System.out.println(" - Enter code flight " + i + ":");
+			String codeFlight = scanner.nextLine();
+
+			System.out.println(" - Enter name flight " + codeFlight + ":");
+			String nameFlight = scanner.nextLine();
+
+			System.out.println(" - Enter date take Off " + " dd/MM/yyyy " + codeFlight + " : ");
+			String dateTakeOff = scanner.nextLine();
+
+			System.out.println(" - Enter baggage signed " + codeFlight + ": ");
+			String baggagesign = scanner.nextLine();
+			int priceTicket;
+			while (true) {
+				try {
+					System.out.println(" - Enter price  " + codeFlight + ": ");
+					priceTicket = scanner.nextInt();
+					try {
+						checkPriceTicket(priceTicket);
+						break;
+					} catch (ExceptionCheckNumber e) {
+						System.err.println(e.getMessage());
+					}
+				} catch (Exception e) {
+					scanner.next();
+					System.err.println(" Price must be number, try it again ! ");
+				}
+			}
+
+			scanner.nextLine();
+			airlineTicketList
+					.addAirlineTicket(new AirlineTicket(codeFlight, nameFlight, dateTakeOff, baggagesign, priceTicket));
+			System.out.println(" Add airline ticket succesfully ");
+		}
+		airlineTicketList.getAllInformation();
 	}
 
 	// Menu App
@@ -40,6 +80,10 @@ public class App {
 		switch (choice) {
 		case 1:
 			System.out.println("| 1. Enter your information flight | >>> ");
+			System.out.println(" Enter your quality information flight ");
+			int quality = scanner.nextInt();
+			scanner.nextLine();
+			addAirlineTicket(quality);
 			break;
 
 		case 2:

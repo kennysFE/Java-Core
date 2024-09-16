@@ -1,6 +1,8 @@
 package Airline_Ticket_Management;
 
-public class AirlineTicket {
+import java.io.Serializable;
+
+public class AirlineTicket implements Serializable {
 
 	// Atribute
 	private String codeFlight;
@@ -70,6 +72,11 @@ public class AirlineTicket {
 	public String toString() {
 		return "AirlineTicket [codeFlight=" + codeFlight + ", nameFlight=" + nameFlight + ", dateTakeOff=" + dateTakeOff
 				+ ", baggageSign=" + baggageSign + ", priceTicket=" + priceTicket + "]";
+	}
+
+	// display
+	public String display() {
+		return toString();
 	}
 
 }
