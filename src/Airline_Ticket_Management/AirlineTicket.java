@@ -75,8 +75,9 @@ public class AirlineTicket implements Serializable {
 	}
 
 	// display
-	public String display() {
-		return toString();
+	public void display() {
+		System.out.println("AirlineTicket [codeFlight=" + codeFlight + ", nameFlight=" + nameFlight + ", dateTakeOff="
+				+ dateTakeOff + ", baggageSign=" + baggageSign + ", priceTicket=" + priceTicket + "]");
 	}
 
 }

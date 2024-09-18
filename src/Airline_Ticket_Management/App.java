@@ -88,18 +88,24 @@ public class App {
 
 		case 2:
 			System.out.println("| 2. Save information flight | >>> ");
+			airlineTicketList.saveFile();
 			break;
 
 		case 3:
 			System.out.println("| 3. Read information flight | >>> ");
+			airlineTicketList.readFile();
 			break;
 
 		case 4:
 			System.out.println("| 4. Sort information flight by format decrease price ticket | >>> ");
+			airlineTicketList.arrangeAirlineTicketByPrice();
 			break;
 
 		case 5:
 			System.out.println("| 5. Get information by code flight | >>> ");
+			System.out.println(" Enter your code flight ");
+			String codeFlight = scanner.nextLine();
+			airlineTicketList.getInformationByCodeFlight(codeFlight);
 			break;
 
 		case 6:
@@ -122,7 +128,7 @@ public class App {
 				try {
 					System.out.print(" Your choice : ");
 					choice = scanner.nextInt();
-					selectActionMenu(choice);
+					scanner.nextLine();
 					try {
 						checkChoice(choice);
 						break;
@@ -133,10 +139,12 @@ public class App {
 				} catch (Exception e) {
 					System.err.println(" >>> Must be number, try it again ! ");
 					e.getStackTrace();
+					e.getMessage();
 					scanner.nextLine();
 				}
 			}
 
+			selectActionMenu(choice);
 		}
 
 		scanner.close();
