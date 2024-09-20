@@ -19,3 +19,7 @@
 - 3. Read information flight on file (DataFlight.txt) and show on screen 
 - 4. Show information after sort data format decrease price ticket
 - 5. Print information each flight on file respectively (example: infor flight 1 save on file flight_1.txt );   
+
+
+
+- Notice : after using scanner.int(), compulsorry using scanner.nextLine() under scanner.int()

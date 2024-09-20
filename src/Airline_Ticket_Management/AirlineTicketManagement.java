@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,6 +19,23 @@ public class AirlineTicketManagement implements Comparator<AirlineTicket> {
 	// Add airline ticket
 	public void addAirlineTicket(AirlineTicket airlineTicket) {
 		airlineList.add(airlineTicket);
+	}
+
+	// Exception Check FormatDate
+
+	public static boolean isValidDateFormat(String dateStr, String format) {
+		// Tạo đối tượng SimpleDateFormat với định dạng mong đợi
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		// Đặt chế độ không dễ dãi (strict) để kiểm tra định dạng chính xác
+		sdf.setLenient(false);
+
+		try {
+			// Cố gắng phân tích chuỗi ngày tháng
+			sdf.parse(dateStr);
+			return true; // Nếu không gặp lỗi, định dạng là hợp lệ
+		} catch (Exception e) {
+			return false; // Nếu gặp lỗi, định dạng là không hợp lệ
+		}
 	}
 
 	// Get all information airline ticket list
