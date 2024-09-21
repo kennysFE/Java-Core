@@ -1,5 +1,6 @@
 package Airline_Ticket_Management;
 
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class App {
@@ -23,6 +24,23 @@ public class App {
 		return priceTicket;
 	}
 
+	// Exception Check FormatDate
+
+	public static boolean isValidDateFormat(String dateStr, String format) {
+		// Tạo đối tượng SimpleDateFormat với định dạng mong đợi
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		// Đặt chế độ không dễ dãi (strict) để kiểm tra định dạng chính xác
+		sdf.setLenient(false);
+
+		try {
+			// Cố gắng phân tích chuỗi ngày tháng
+			sdf.parse(dateStr);
+			return true; // Nếu không gặp lỗi, định dạng là hợp lệ
+		} catch (Exception e) {
+			return false; // Nếu gặp lỗi, định dạng là không hợp lệ
+		}
+	}
+
 	// Feature add airline ticket
 	public static void addAirlineTicket(int quality) {
 		for (int i = 1; i <= quality; i++) {
@@ -32,11 +50,30 @@ public class App {
 			System.out.println(" - Enter name flight " + codeFlight + ":");
 			String nameFlight = scanner.nextLine();
 
-			System.out.println(" - Enter date take Off " + " dd/MM/yyyy " + codeFlight + " : ");
-			String dateTakeOff = scanner.nextLine();
+			String dateTakeOff;
+
+			while (true) {
+				try {
+					System.out.println(" - Enter date take Off " + " dd/MM/yyyy " + codeFlight + " : ");
+					dateTakeOff = scanner.nextLine();
+					try {
+						if (isValidDateFormat(dateTakeOff, "dd/MM/yyyy")) {
+							break;
+						} else {
+							throw new Exception();
+						}
+					} catch (Exception e) {
+						e.getStackTrace();
+						System.out.println(" Pls enter true format date take off (dd/MM/yyyy) ");
+					}
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
 
 			System.out.println(" - Enter baggage signed " + codeFlight + ": ");
 			String baggagesign = scanner.nextLine();
+
 			int priceTicket;
 			while (true) {
 				try {
