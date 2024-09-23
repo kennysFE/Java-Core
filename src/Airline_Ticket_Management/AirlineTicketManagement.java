@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -63,48 +61,67 @@ public class AirlineTicketManagement implements Comparator<AirlineTicket> {
 				System.out.println(ticket.toString());
 			}
 		} else {
-			System.out.println(" Airline ticket not exist ");
+			System.err.println(" Airline ticket not exist ");
 		}
 	}
 
 	// method save file text
-	public void saveFile() {
-		if (airlineList.size() > 0) {
-			// Crete FileOutputStream
-			FileOutputStream fos = null;
+	public static void saveFile(String path, ArrayList<AirlineTicket> airlineList) {
+		// Crete FileOutputStream
+		FileOutputStream fos = null;
 
-			try {
-				fos = new FileOutputStream("AirlineTicket.txt", true);
+		try {
+			fos = new FileOutputStream(path, true);
 
-				String headerFormat = " Code Flight, Name Flight, Date Take Off, Baggage Sign , Price Ticket "
-						+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n";
+//			String headerFormat = " Code Flight, Name Flight, Date Take Off, Baggage Sign , Price Ticket "
+//					+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n";
 
-				fos.write(headerFormat.getBytes("utf-8"));
+//			fos.write(headerFormat.getBytes("utf-8"));
 
-				for (AirlineTicket ticket : airlineList) {
-					fos.write((ticket.toString() + "\n ").getBytes("utf-8"));
-				}
+			for (AirlineTicket ticket : airlineList) {
+				fos.write((ticket.toString() + "\n ").getBytes("utf-8"));
+			}
 
-			} catch (FileNotFoundException e) {
-				System.err.println(" File invalid ");
-				e.getStackTrace();
-			} catch (IOException e) {
-				System.err.println(" Output invalid ");
-				e.getStackTrace();
-			} finally {
-				if (fos != null) {
-					try {
-						fos.close();
-					} catch (Exception e2) {
-						System.out.println(" Closed file error !");
-						e2.getStackTrace();
-					}
+		} catch (FileNotFoundException e) {
+			System.err.println(" File invalid ");
+			e.getStackTrace();
+		} catch (IOException e) {
+			System.err.println(" Output invalid ");
+			e.getStackTrace();
+		} finally {
+			if (fos != null) {
+				try {
+					fos.close();
+				} catch (Exception e2) {
+					System.out.println(" Closed file error !");
+					e2.getStackTrace();
 				}
 			}
-		} else {
-			System.out.println(" Airline ticket not exist ");
 		}
+	}
 
+	public void saveFileInformation(String path) {
+		if (airlineList.size() > 0) {
+			saveFile(path, airlineList);
+		} else {
+			System.err.println(" Airline ticket not exist ");
+		}
+	}
+
+	public void saveFileByCode(String code) {
+		if (code.equals("VJA") || code.equals("VNA") || code.equals("JET")) {
+			ArrayList<AirlineTicket> airlineTicketByCode = new ArrayList<>();
+			for (AirlineTicket ticket : airlineList) {
+				if (ticket.getCodeFlight().substring(0, 3).equals(code)) {
+					System.out.println(ticket.toString());
+					airlineTicketByCode.add(ticket);
+				}
+			}
+			System.out.println(" Save file sucessfuly ");
+			saveFile(code, airlineTicketByCode);
+		} else {
+			System.err.println(" Code invalid or airline ticket not found , try it again ");
+		}
 	}
 
 	// method read file text

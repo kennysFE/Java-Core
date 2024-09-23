@@ -125,7 +125,7 @@ public class App {
 
 		case 2:
 			System.out.println("| 2. Save information flight | >>> ");
-			airlineTicketList.saveFile();
+			airlineTicketList.saveFileInformation("AirlineTicket.txt");
 			break;
 
 		case 3:
@@ -143,6 +143,11 @@ public class App {
 			System.out.println(" Enter your code flight ");
 			String codeFlight = scanner.nextLine();
 			airlineTicketList.getInformationByCodeFlight(codeFlight);
+
+			// Testing save file by code flight
+			System.out.println(" Enter your code id, you want to save file ");
+			String code = scanner.nextLine();
+			airlineTicketList.saveFileByCode(code);
 			break;
 
 		case 6:

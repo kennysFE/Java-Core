@@ -2,4 +2,10 @@
 AirlineTicket [codeFlight=803, nameFlight=VietNam Japan , dateTakeOff=6/7/2010, baggageSign=700 kg, priceTicket=450000]
   Code Flight, Name Flight, Date Take Off, Baggage Sign , Price Ticket 21/09/2024
 AirlineTicket [codeFlight=150, nameFlight=150, dateTakeOff=3/3/2003, baggageSign=500 kg, priceTicket=700000]
+  Code Flight, Name Flight, Date Take Off, Baggage Sign , Price Ticket 23/09/2024
+AirlineTicket [codeFlight=VJA002, nameFlight=VietNam Laos, dateTakeOff=4/5/2005, baggageSign=200 kg, priceTicket=500000]
+ AirlineTicket [codeFlight=VJA808, nameFlight=Singapore Indonesia, dateTakeOff=6/6/2006, baggageSign=1000 kg, priceTicket=100000]
+ AirlineTicket [codeFlight=VNA567, nameFlight=VietNam USA, dateTakeOff=7/7/2003, baggageSign=670 kg, priceTicket=100000]
+ AirlineTicket [codeFlight=VietNam Japan , nameFlight=dads, dateTakeOff=2/1/5, baggageSign=1000 kg, priceTicket=7800000]
+ AirlineTicket [codeFlight=JET000, nameFlight=s, dateTakeOff=7/7/2001, baggageSign=1900 kg, priceTicket=7000000]
  
