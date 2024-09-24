@@ -1,0 +1,4 @@
+AirlineTicket [codeFlight=VNA200, nameFlight=VietNam, dateTakeOff=2/2/2002, baggageSign=190 kg, priceTicket=8000000]
+ AirlineTicket [codeFlight=VNA300, nameFlight=VietNam, dateTakeOff=3/3/2003, baggageSign=500 kg, priceTicket=6000000]
+ AirlineTicket [codeFlight=VNA100, nameFlight=VietNam, dateTakeOff=1/1/2001, baggageSign=100 kg, priceTicket=1000000]
+ 

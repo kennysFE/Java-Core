@@ -124,6 +124,21 @@ public class AirlineTicketManagement implements Comparator<AirlineTicket> {
 		}
 	}
 
+	public void saveFileSeachFlightByCode(String code) {
+		if (airlineList.size() > 0) {
+			ArrayList<AirlineTicket> airlineTicketByCode = new ArrayList<>();
+			for (AirlineTicket ticketSearch : airlineList) {
+				if (ticketSearch.getCodeFlight().equals(code)) {
+					airlineTicketByCode.add(ticketSearch);
+				}
+			}
+			saveFile(code, airlineTicketByCode);
+			System.out.println(" Information of flght is saved ");
+		} else {
+			System.err.println(" Code invalid or airline ticket not found , try it again ");
+		}
+	}
+
 	// method read file text
 	public void readFile() {
 		FileReader fileReader = null;

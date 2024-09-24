@@ -107,8 +107,9 @@ public class App {
 		System.out.println("| 2. Save information flight | ");
 		System.out.println("| 3. Read information flight | ");
 		System.out.println("| 4. Sort information flight by format decrease price ticket | ");
-		System.out.println("| 5. Get information by code flight | ");
-		System.out.println("| 6. End process | ");
+		System.out.println("| 5. Get information by each code flight | ");
+		System.out.println("| 6. Save information format code flight | ");
+		System.out.println("| 7. End process | ");
 		System.out.println(" ++ ----------------------- ++ ");
 	}
 
@@ -139,19 +140,24 @@ public class App {
 			break;
 
 		case 5:
+			// Save file each flight
 			System.out.println("| 5. Get information by code flight | >>> ");
 			System.out.println(" Enter your code flight ");
 			String codeFlight = scanner.nextLine();
 			airlineTicketList.getInformationByCodeFlight(codeFlight);
+			airlineTicketList.saveFileSeachFlightByCode(codeFlight);
+			break;
 
-			// Testing save file by code flight
-			System.out.println(" Enter your code id, you want to save file ");
+		case 6:
+			// Save file by code flight
+			System.out.println("| 6. Save information format code flight | >>> ");
+			System.out.println(" Enter your code airline, you want to save file ");
 			String code = scanner.nextLine();
 			airlineTicketList.saveFileByCode(code);
 			break;
 
-		case 6:
-			System.out.println("| 6. End process | >>> ");
+		case 7:
+			System.out.println("| 7. End process | >>> ");
 			System.exit(0);
 			break;
 
