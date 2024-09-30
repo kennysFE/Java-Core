@@ -12,5 +12,6 @@ public class LamDaJava {
 		numbers.forEach((n) -> {
 			System.out.println(n);
 		});
+
 	}
 }
