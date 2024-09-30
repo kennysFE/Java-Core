@@ -173,4 +173,14 @@ public class AirlineTicketManagement implements Comparator<AirlineTicket> {
 
 	}
 
+	// method save file object
+	public void saveFileObject() {
+
+	}
+
+	// method read file object
+	public void readFileObject() {
+
+	}
+
 }
