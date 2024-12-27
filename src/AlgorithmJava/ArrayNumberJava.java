@@ -5,6 +5,21 @@ import java.util.Scanner;
 
 public class ArrayNumberJava {
 
+	// fibonacciSequence
+	public void fibonacciSequence(int count) {
+		int a3 = 0;
+		int b3 = 1;
+		int c3 = 1;
+
+		for (int i = 0; i <= count; i++) {
+			System.out.print(a3 + ";");
+			a3 = b3;
+			b3 = c3;
+			c3 = a3 + b3;
+		}
+
+	};
+
 	public static void main(String[] args) {
 
 		// Ex1: 1,-3,5,-7,9,-11
@@ -49,5 +64,11 @@ public class ArrayNumberJava {
 		System.out.println(" Ex2: New Array " + arrNumber.toString());
 
 		scanner.close();
+
+		// Ex3: Fibonacci sequence using recursion (0, 1, 1, 2, 3, 5, 8 ... )
+		ArrayNumberJava ex3 = new ArrayNumberJava();
+
+		ex3.fibonacciSequence(10);
+
 	}
 }
