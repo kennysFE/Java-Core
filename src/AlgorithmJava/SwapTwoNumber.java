@@ -14,6 +14,23 @@ public class SwapTwoNumber {
 		}
 	}
 
+	public static void findSecondMaxValue(int[] array) {
+
+		int firstMaxValue = 0;
+		int secondMaxValue = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] > firstMaxValue) {
+				firstMaxValue = array[i];
+			} else {
+				secondMaxValue = array[i];
+			}
+
+		}
+
+		System.out.println(secondMaxValue);
+	}
+
 	public static void main(String[] args) {
 		// Ex1: Swap two number not using variable thrild
 		int a = 10;
@@ -30,5 +47,15 @@ public class SwapTwoNumber {
 			arrNumberChecked.add(i);
 		}
 		onlyOddNumber(arrNumberChecked);
+
+		// Ex3: find max second value
+		int[] arrNumberChecked1 = new int[5];
+		arrNumberChecked1[0] = 10;
+		arrNumberChecked1[1] = 20;
+		arrNumberChecked1[2] = 30;
+		arrNumberChecked1[3] = 40;
+		arrNumberChecked1[4] = 50;
+		findSecondMaxValue(arrNumberChecked1);
+
 	}
 }
