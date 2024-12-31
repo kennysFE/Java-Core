@@ -1,6 +1,5 @@
 package AlgorithmJava;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SwapTwoNumber {
@@ -16,13 +15,16 @@ public class SwapTwoNumber {
 
 	public static void findSecondMaxValue(int[] array) {
 
-		int firstMaxValue = 0;
-		int secondMaxValue = 0;
+		// 4 2 5 6 10 9 8 3
+
+		int firstMaxValue = 0; // 4 4 5 6 10 10 10
+		int secondMaxValue = 0;// 0 2 4 5 6 9 8
 
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] > firstMaxValue) {
+				secondMaxValue = firstMaxValue;
 				firstMaxValue = array[i];
-			} else {
+			} else if (array[i] > secondMaxValue) {
 				secondMaxValue = array[i];
 			}
 
@@ -42,19 +44,21 @@ public class SwapTwoNumber {
 		System.out.println(" a = " + a + " b = " + b);
 
 		// Ex2: onlyOddNumber
-		List<Integer> arrNumberChecked = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			arrNumberChecked.add(i);
-		}
-		onlyOddNumber(arrNumberChecked);
+//		List<Integer> arrNumberChecked = new ArrayList<>();
+//		for (int i = 0; i < 10; i++) {
+//			arrNumberChecked.add(i);
+//		}
+//		onlyOddNumber(arrNumberChecked);
 
 		// Ex3: find max second value
 		int[] arrNumberChecked1 = new int[5];
 		arrNumberChecked1[0] = 10;
-		arrNumberChecked1[1] = 20;
-		arrNumberChecked1[2] = 30;
-		arrNumberChecked1[3] = 40;
-		arrNumberChecked1[4] = 50;
+		arrNumberChecked1[1] = 32;
+		arrNumberChecked1[2] = 60;
+		arrNumberChecked1[3] = 10;
+		arrNumberChecked1[4] = 10;
+//		arrNumberChecked1[5] = 30;
+		System.out.println(arrNumberChecked1);
 		findSecondMaxValue(arrNumberChecked1);
 
 	}
