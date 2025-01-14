@@ -1,5 +1,6 @@
 package AlgorithmJava;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Interview question fresher java fpt Da Nang
@@ -107,15 +108,43 @@ public class FresherJavaFPT {
 
 	}
 
+	public static void checkArrayNumber(int numberChecked) {
+
+		// 2, 4, -6, 8, 10, -12, 14, 16, -18, ....
+		ArrayList<Integer> arrayChecked = new ArrayList<>();
+		ArrayList<Integer> main1 = new ArrayList<>();
+
+		for (int i = 1; i <= numberChecked; i++) {
+			if (i % 2 == 0) {
+				arrayChecked.add(i);
+			}
+		}
+
+		for (int i = 0; i < arrayChecked.size(); i++) {
+			if (arrayChecked.get(i) % 3 == 0) {
+				main1.add(-arrayChecked.get(i));
+			} else {
+				main1.add(arrayChecked.get(i));
+			}
+
+		}
+
+		System.out.println(main1.toString());
+
+	}
+
 	public static void main(String[] args) {
 
 		// Ex1: Cộng các số chia hết cho 5 trong mảng
 		// SumDevideFive(5);
 
 		// Ex2:
-		// minMaxValueInArrays(9);
+//		minMaxValueInArrays(9);
 
-		// Ex3
-		KiemTraSoNguyenTo(8);
+		// Ex3:
+//		KiemTraSoNguyenTo(8);
+
+		// EX4:
+		checkArrayNumber(20);
 	}
 }
